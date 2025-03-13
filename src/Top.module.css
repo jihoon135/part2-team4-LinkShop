@@ -1,0 +1,17 @@
+.topContainer {
+    position: relative; /* 페이지 흐름을 유지하면서 최상단에 배치 */
+    width: 100vw; /* 뷰포트 전체 너비 차지 */
+    height: auto; /* 이미지 비율 유지 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+  }
+  
+  .topImage {
+    width: 100%; /* 부모 컨테이너의 전체 너비를 차지 */
+    height: auto; /* 이미지 비율 유지 */
+    object-fit: cover; /* 좌우를 꽉 채우면서 비율 유지 */
+  }
+  
