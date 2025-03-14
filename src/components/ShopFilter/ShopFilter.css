@@ -1,0 +1,27 @@
+.filter__container {
+  max-width: 1200px;
+  align-content: center;
+  margin: 0 auto;
+  display: flex;
+  padding: 40px 0 8px;
+}
+.filter__box {
+  display: flex;
+  align-items: center;
+}
+.filter__span {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 21.48px;
+  margin-right: 4px;
+}
+
+.filter__button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  padding: 0;
+}

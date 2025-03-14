@@ -1,0 +1,32 @@
+.shop__list__flex {
+  display: flex;
+  justify-content: center;
+}
+.shop__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .shop__list__flex {
+    width: 696px;
+    margin: 24px auto;
+  }
+
+  .shop__list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .shoplist__flex {
+    width: 344px;
+    margin: 15px auto;
+  }
+
+  .shop__list {
+    grid-template-columns: 1fr;
+  }
+}

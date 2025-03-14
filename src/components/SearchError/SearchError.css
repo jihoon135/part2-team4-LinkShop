@@ -1,0 +1,22 @@
+.search__error__container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.search__error__icon {
+  display: flex;
+  align-items: center;
+  margin-top: 100px;
+  width: 375px;
+  height: 182px;
+  top: 324px;
+  left: 775px;
+  gap: 0;
+}
+
+.search__error__text {
+  font-size: 17px;
+}
