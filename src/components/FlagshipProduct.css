@@ -1,0 +1,57 @@
+.title {
+    font-size: 14px; /* 제목 크기 조정 */
+    font-weight: bold;
+    margin-left: 290px;
+    font-family: 'Pretendard', sans-serif; /* Pretendard 폰트 적용 */
+    margin-top: 2px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 9px; /* 간격 조정 */
+    margin-top: 16px; /* 여백 줄이기 */
+    padding: 0 12px; /* 좌우 여백 조정 */
+    max-width: 980px; /* 최대 너비 조정 */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.product-box {
+    background-color: #fafafb;
+    border-radius: 17px; /* 모서리 둥글기 조정 */
+    padding: 12px; /* 패딩 줄이기 */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    font-family: 'Pretendard', sans-serif; /* Pretendard 폰트 적용 */
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.product-image {
+    width: 80px; /* 이미지 크기 */
+    height: 80px;
+    object-fit: cover;
+    margin-left: 12px; /* 모든 이미지 동일한 왼쪽 여백 적용 */
+}
+
+.product-info {
+    text-align: left;
+    margin-left: 12px; /* 텍스트와 이미지 사이 간격 통일 */
+}
+
+.product-name {
+    margin: 0;
+    font-size: 14px; /* 글씨 크기 */
+    font-weight: bold;
+    font-family: 'Pretendard', sans-serif;
+}
+
+.product-price {
+    margin: 4px 0;
+    font-size: 12px; /* 가격 글씨 크기 */
+    color: #888;
+    font-family: 'Pretendard', sans-serif;
+}
