@@ -1,0 +1,132 @@
+@import url('https://cdn.jsdelivr.net/npm/pretendard@latest/dist/web/static/pretendard.css');
+
+.storeInfoBox {
+    position: relative;
+    padding: 20px;
+    background-color: #ffffff; /* White background for the whole box */
+    border-radius: 10px;
+    max-width: 970npx; /* Set a max-width to limit the width of the box */
+    margin: 0 auto; /* Center the box horizontally */
+    font-family: 'Pretendard', sans-serif; /* Pretendard 폰트 적용 */
+}
+
+.contentWrapper {
+    position: relative;
+    background-color: #fafafb; /* Light gray background for the content */
+    padding: 35px;
+    border-radius: 24px; /* Optional: shadow for depth */
+    font-family: 'Pretendard', sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.likeButton {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 10px; /* Reduced font size */
+    margin-left: 9px;
+    font-family: 'Pretendard', sans-serif;
+}
+
+.likeButton img {
+    width: 17px;
+    height: 17px;
+}
+
+.likeCount {
+    margin-left: 8px;
+    font-size: 16px; /* Reduced font size */
+    font-family: 'Pretendard', sans-serif;
+}
+
+.profileImage {
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+    width: 80px;
+    height: 80px;
+}
+
+.storeName, .username {
+    text-align: center; /* Center the text */
+    margin: 10px 0;
+    font-family: 'Pretendard', sans-serif;
+}
+
+.storeName {
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.username {
+    color: #808080;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.buttonContainer {
+    position: absolute; /* Change to absolute positioning */
+    top: 10px;
+    right: 10px; /* Align the container to the top-right corner */
+}
+
+.shareButton, .menuButton {
+    position: absolute;
+    top: 6px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    width: 20px; /* Reduced width */
+    height: 20px; /* Reduced height */
+    margin-right: 20px;
+}
+
+.shareButton {
+    right: 40px; /* Position the share button to the left of the menu button */
+}
+
+.shareButton img { 
+    width: 17px;
+    height: 17px;
+}
+
+.menuButton {
+    right: 0; /* Position the menu button to the far-right */
+}
+
+.menuButton img { 
+    width: 17px;
+    height: 17px;
+}
+
+.optionsMenu {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    min-width: 100px;
+    text-align: center;
+    font-family: 'Pretendard', sans-serif;
+}
+
+.optionButton {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: 'Pretendard', sans-serif;
+}
