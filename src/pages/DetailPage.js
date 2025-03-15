@@ -1,9 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
-import { StoreInfoBox } from './StoreInfoBox';
-import { FlagshipProduct } from './FlagshipProduct';
-import { DetailTopImg } from './DetailTopImg';
-import BackButton from './BackButton';
+import '../App.css';
+import { StoreInfoBox } from '../components/StoreInfoBox';
+import { FlagshipProduct } from '../components/FlagshipProduct';
+import { DetailTopImg } from '../components/DetailTopImg';
+import BackButton from '../components/BackButton';
 
 function DetailPage() {
   return (
