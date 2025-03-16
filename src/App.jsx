@@ -1,11 +1,11 @@
-import Header from './components/header/Header';
-import Footer from './components/footer/Footer';
+import DetailPage from './pages/DetailPage/DetailPage.jsx';
 
-export default function App() {
+function App() {
   return (
     <>
-      <Header />
-      <Footer />
+      <DetailPage />
     </>
   );
 }
+
+export default App;

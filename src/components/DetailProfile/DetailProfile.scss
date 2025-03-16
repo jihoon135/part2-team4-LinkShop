@@ -1,0 +1,88 @@
+.detailprofile {
+  position: relative;
+  margin-top: 20px;
+  padding: 20px 24px 40px;
+  border-radius: 24px;
+  background: #fafafb;
+  text-align: center;
+
+  &__btnwrap {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 18px;
+  }
+
+  &__like {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__more {
+    display: none;
+    position: absolute;
+    top: 51px;
+    right: 22px;
+    width: 160px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 18px 0;
+      text-align: center;
+    }
+    button + button {
+      border-top: 1px solid #ddd;
+    }
+  }
+
+  &__name {
+    margin-top: 16px;
+    font-weight: 900;
+    font-size: 32px;
+    color: #14151a;
+  }
+
+  &__id {
+    margin-top: 8px;
+    color: #888790;
+  }
+}
+
+.icon-btn {
+  width: 23px;
+  height: 23px;
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &.like {
+    background-image: url('detail/icon_like.png');
+
+    &.active {
+      background-image: url('detail/icon_like_active.png');
+    }
+  }
+
+  &.share {
+    background-image: url('detail/icon_share.png');
+  }
+
+  &.more {
+    background-image: url('detail/icon_more.png');
+
+    &.active + .detailprofile__more {
+      display: block;
+    }
+  }
+}

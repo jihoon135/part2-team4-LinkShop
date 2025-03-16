@@ -1,0 +1,41 @@
+.detailproducts {
+  margin-top: 23px;
+
+  &__title {
+    padding-bottom: 16px;
+    font-weight: 700;
+    color: #14151a;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 24px;
+    row-gap: 12px;
+    flex-grow: 0;
+  }
+
+  .productcard {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-basis: 588px;
+    padding: 16px 20px;
+    border-radius: 24px;
+    background-color: #fafafb;
+
+    &__text {
+      color: #14151a;
+    }
+
+    &__name {
+      font-size: 17px;
+    }
+
+    &__price {
+      padding-top: 10px;
+      font-weight: bold;
+      font-size: 20px;
+    }
+  }
+}
