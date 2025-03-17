@@ -22,6 +22,7 @@ function ShopList() {
         <Product />
       </div>
     </div>
+
     /* 검색결과 없을떄 */
     /* <SearchError /> */
   );
