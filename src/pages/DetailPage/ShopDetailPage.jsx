@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './ShopDetail.scss';
-import { detailShop, updateShop } from '../../service/api.js';
+import { deleteShop, detailShop, updateShop } from '../../service/api.js';
 import LikeButton from '../../components/Likes/LikeButton.jsx';
 import PasswordModal from '../../components/PasswordModal/PasswordModal.jsx';
+import share from '../../assets/images/share.png';
+import more from '../../assets/images/more.png';
 
 const DetailStyle = {
   top: '20px',
@@ -30,39 +32,55 @@ export default function ShopDetailPage() {
   const [detailData, setDetailData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [modalType, setModalType] = useState('');
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = window.location.href;
 
   const handleBackClick = () => {
     window.location.href = '/list';
   };
 
-  // 비밀번호 검증 후 수정 페이지로 이동
-  const handlePasswordSubmit = async (password) => {
+  const handlePasswordSubmit = async (password, type) => {
     setLoading(true);
     try {
-      const updatedData = {
-        shop: {
-          imageUrl: detailData.shop.imageUrl,
-          urlName: detailData.shop.urlName || 'string',
-          shopUrl: detailData.shop.shopUrl,
-        },
-        products: detailData.products.map((product) => ({
-          price: product.price,
-          imageUrl: product.imageUrl,
-          name: product.name,
-        })),
-        userId: detailData.userId,
-        name: detailData.name,
-      };
-      const response = await updateShop(id, password, updatedData);
-      console.log(response);
+      if (type === 'edit') {
+        // 비밀번호 검증 후 수정 페이지로 이동
+        const updatedData = {
+          shop: {
+            imageUrl: detailData.shop.imageUrl,
+            urlName: detailData.shop.urlName || 'string',
+            shopUrl: detailData.shop.shopUrl,
+          },
+          products: detailData.products.map((product) => ({
+            price: product.price,
+            imageUrl: product.imageUrl,
+            name: product.name,
+          })),
+          userId: detailData.userId,
+          name: detailData.name,
+        };
+        const response = await updateShop(id, password, updatedData);
+        console.log(response);
 
-      if (response && response.id) {
-        setShowPasswordModal(false);
-        navigate(`/linkpost/${id}/edit`);
-      } else {
-        alert('비밀번호가 일치하지 않습니다.');
+        if (response && response.id) {
+          setShowPasswordModal(false);
+          navigate(`/linkpost/${id}/edit`);
+        } else {
+          alert('비밀번호가 일치하지 않습니다.');
+        }
+      } else if (type === 'delete') {
+        // 비밀번호 검증 후 스토어 삭제 및 초기 화면 이동
+        const response = await deleteShop(id, password);
+        console.log(response);
+
+        if (response && response.id) {
+          setShowPasswordModal(false);
+          alert('삭제가 완료되었습니다.');
+          navigate(`/list`);
+        } else {
+          alert('비밀번호가 일치하지 않습니다.');
+        }
       }
     } catch (error) {
       if (error.message === 'Bad Request') {
@@ -74,6 +92,8 @@ export default function ShopDetailPage() {
       setLoading(false);
     }
   };
+
+  console.log(detailData);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -87,6 +107,23 @@ export default function ShopDetailPage() {
   if (!detailData) {
     return <div className="loading">로딩 중...</div>;
   }
+
+  // URL 복사
+  const handleCopyUrl = async (text) => {
+    await navigator.clipboard.writeText(text);
+
+    alert('현재 URL을 복사했습니다.');
+  };
+
+  const handleMoreClick = (e) => {
+    const $button = e.target.closest('.detail__more');
+    if ($button.classList.contains('active')) {
+      $button.classList.remove('active');
+    } else {
+      $button.classList.add('active');
+    }
+  };
+
   return (
     <div className="detail">
       <div className="detail__back" onClick={handleBackClick}>
@@ -99,25 +136,42 @@ export default function ShopDetailPage() {
           cardId={detailData.id}
           initialLikes={detailData.likes}
         />
+        <div className="detail__buttonWrap">
+          <button>
+            <img
+              src={share}
+              alt="공유"
+              onClick={() => handleCopyUrl(location)}
+            />
+          </button>
+          <button className="detail__more" onClick={handleMoreClick}>
+            <img src={more} alt="더보기" />
+          </button>
+          <div className="detail__moreBox">
+            <button
+              onClick={() => {
+                setModalType('edit');
+                setShowPasswordModal(true);
+              }}
+            >
+              수정하기
+            </button>
+            <button
+              onClick={() => {
+                setModalType('delete');
+                setShowPasswordModal(true);
+              }}
+            >
+              삭제하기
+            </button>
+          </div>
+        </div>
         <div className="detail__profile">
           <div className="detail__profileImage">
             <img src={detailData.shop.imageUrl} alt={detailData.shop.urlName} />
           </div>
           <h2 className="detail__shopName">{detailData.name}</h2>
           <div className="detail__shopId">@{detailData.userId}</div>
-        </div>
-        <div
-          style={{
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            display: 'inline-block',
-            border: '1px solid #000',
-            cursor: 'pointer',
-          }}
-          onClick={() => setShowPasswordModal(true)}
-        >
-          수정하기{id}
         </div>
       </div>
 
@@ -131,6 +185,7 @@ export default function ShopDetailPage() {
         <PasswordModal
           onSubmit={handlePasswordSubmit}
           onClose={setShowPasswordModal}
+          type={modalType}
         />
       )}
       {loading && (
