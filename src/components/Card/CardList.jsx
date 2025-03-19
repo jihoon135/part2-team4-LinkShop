@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Card from './Card';
 import './CardList.scss';
 
-export default function CardList({ data, loading }) {
+const CardList = memo(({ data, loading }) => {
   return (
     <div className="card">
       {loading ? (
@@ -14,4 +14,6 @@ export default function CardList({ data, loading }) {
       )}
     </div>
   );
-}
+});
+
+export default CardList;

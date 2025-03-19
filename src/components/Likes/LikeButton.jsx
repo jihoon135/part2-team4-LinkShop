@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import fillHeart from '../../assets/images/filled-heart.png';
 import emptyHeart from '../../assets/images/empty-heart.png';
 import { likeShop, unlikeShop } from '../../service/api';
 
-export default function LikeButton({ cardId, initialLikes, heartStyle }) {
+const LikeButton = memo(({ cardId, initialLikes, heartStyle }) => {
   const [liked, setLiked] = useState(false);
   const [likesCount, setLikesCount] = useState(initialLikes);
 
@@ -67,4 +67,6 @@ export default function LikeButton({ cardId, initialLikes, heartStyle }) {
       <span>{likesCount}</span>
     </div>
   );
-}
+});
+
+export default LikeButton;
