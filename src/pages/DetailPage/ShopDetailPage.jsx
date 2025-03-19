@@ -35,7 +35,6 @@ export default function ShopDetailPage() {
   const [modalType, setModalType] = useState('');
   const { id } = useParams();
   const navigate = useNavigate();
-  const location = window.location.href;
 
   const handleBackClick = () => {
     window.location.href = '/list';
