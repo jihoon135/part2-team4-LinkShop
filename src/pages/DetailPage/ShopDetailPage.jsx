@@ -93,8 +93,6 @@ export default function ShopDetailPage() {
     }
   };
 
-  console.log(detailData);
-
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -112,7 +110,7 @@ export default function ShopDetailPage() {
   const handleCopyUrl = async (text) => {
     await navigator.clipboard.writeText(text);
 
-    alert('현재 URL을 복사했습니다.');
+    alert('URL을 복사했습니다.');
   };
 
   const handleMoreClick = (e) => {
@@ -141,7 +139,7 @@ export default function ShopDetailPage() {
             <img
               src={share}
               alt="공유"
-              onClick={() => handleCopyUrl(location)}
+              onClick={() => handleCopyUrl(detailData.shop.shopUrl)}
             />
           </button>
           <button className="detail__more" onClick={handleMoreClick}>
