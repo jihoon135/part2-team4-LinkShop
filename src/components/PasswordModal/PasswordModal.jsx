@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './PasswordModal.scss';
 
-export default function PasswordModal({ onSubmit, onClose }) {
+export default function PasswordModal({ onSubmit, onClose, type }) {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
@@ -16,8 +16,8 @@ export default function PasswordModal({ onSubmit, onClose }) {
       setError('비밀번호를 입력해주세요.');
       return;
     }
-
-    onSubmit(password);
+    console.log(type);
+    onSubmit(password, type);
   };
 
   const handleClose = () => {
