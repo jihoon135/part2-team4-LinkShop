@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import CardList from '../../components/Card/CardList.jsx';
 import SearchBar from '../../components/SearchBar/SearchBar.jsx';
 import { getShop } from '../../service/api.js';
@@ -59,23 +59,24 @@ export default function ShopListPage() {
     setIsFetching(false);
   };
 
-  const handleSearchChange = (e) => {
+  const handleSearchChange = useCallback((e) => {
     setKeyword(e.target.value);
-  };
+  }, []);
 
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    if (keyword) {
-      const filtered = data.filter((item) =>
-        item.name.toLowerCase().includes(keyword.toLowerCase()),
-      );
-      setFilteredData(filtered);
-    } else {
-      setFilteredData(data);
-    }
-  };
-
-  console.log(data);
+  const handleSearchSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      if (keyword) {
+        const filtered = data.filter((item) =>
+          item.name.toLowerCase().includes(keyword.toLowerCase()),
+        );
+        setFilteredData(filtered);
+      } else {
+        setFilteredData(data);
+      }
+    },
+    [keyword, data],
+  );
 
   return (
     <div className="shop">

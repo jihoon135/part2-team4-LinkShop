@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LikeButton from '../Likes/LikeButton';
 
@@ -7,12 +7,11 @@ const MainStyle = {
   right: 0,
 };
 
-export default function Card({ data }) {
+const Card = memo(({ data }) => {
   const navigate = useNavigate();
   const handleCardClick = (id) => {
     navigate(`/link/${id}`);
   };
-
   return (
     <>
       {data.map((it) => (
@@ -50,4 +49,6 @@ export default function Card({ data }) {
       ))}
     </>
   );
-}
+});
+
+export default Card;

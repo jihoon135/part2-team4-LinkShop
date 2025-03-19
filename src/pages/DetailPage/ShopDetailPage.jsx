@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './ShopDetail.scss';
 import { deleteShop, detailShop, updateShop } from '../../service/api.js';
@@ -12,7 +12,7 @@ const DetailStyle = {
   left: '24px',
 };
 
-function DetailItem({ detailData }) {
+const DetailItem = memo(({ detailData }) => {
   return detailData.products.map((it) => (
     <li key={it.id} className="detail__item">
       <div className="detail__productImage">
@@ -26,7 +26,7 @@ function DetailItem({ detailData }) {
       </div>
     </li>
   ));
-}
+});
 
 export default function ShopDetailPage() {
   const [detailData, setDetailData] = useState(null);
@@ -60,7 +60,6 @@ export default function ShopDetailPage() {
           name: detailData.name,
         };
         const response = await updateShop(id, password, updatedData);
-        console.log(response);
 
         if (response && response.id) {
           setShowPasswordModal(false);
@@ -94,13 +93,12 @@ export default function ShopDetailPage() {
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true);
       const data = await detailShop(id);
       setDetailData(data);
-      setLoading(false);
     };
     fetchData();
   }, [id]);
+
   if (!detailData) {
     return <div className="loading">로딩 중...</div>;
   }
