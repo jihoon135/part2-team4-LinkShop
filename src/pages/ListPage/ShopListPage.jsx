@@ -3,15 +3,17 @@ import CardList from '../../components/Card/CardList.jsx';
 import SearchBar from '../../components/SearchBar/SearchBar.jsx';
 import { getShop } from '../../service/api.js';
 import searchNull from '../../assets/images/Img_search_null.png';
+import Modal from '../../components/Modal/Modal.jsx';
+import { useShopContext } from '../../contexts/ShopContext.jsx';
 
 export default function ShopListPage() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [filteredData, setFilteredData] = useState([]);
   const [keyword, setKeyword] = useState('');
-  const [orderBy, setOrderBy] = useState('recent');
   const [cursor, setCursor] = useState('');
   const [isFetching, setIsFetching] = useState(false);
+  const { toggleModal, orderBy, setOrderBy } = useShopContext();
 
   useEffect(() => {
     const fetchData = async (options) => {
@@ -82,12 +84,10 @@ export default function ShopListPage() {
         handleSearchChange={handleSearchChange}
         handleSearchSubmit={handleSearchSubmit}
       />
-      <div className="sort">상세필터 ▼</div>
-      <button onClick={() => setOrderBy('productsCount')}>
-        등록된 상품 순
+      <button className="sort" onClick={toggleModal}>
+        상세필터 ▼
       </button>
-      <button onClick={() => setOrderBy('recent')}>최신순</button>
-      <button onClick={() => setOrderBy('likes')}>좋아요순</button>
+      <Modal />
 
       {!loading && filteredData.length === 0 ? (
         <div className="card__null">
