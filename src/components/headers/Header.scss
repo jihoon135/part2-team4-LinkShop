@@ -1,0 +1,28 @@
+.header {
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    padding: 40px 20px 32px 20px;
+    margin: 0 auto;
+  }
+
+  &__logo {
+    width: 152px;
+    height: 32px;
+    background-image: url(../../assets/images/logo.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+  }
+}
+.detail-header {
+  max-width: 1920px;
+  height: 70px;
+  background-image: url(../../assets/images/detailHeader.png);
+  background-size: cover;
+  background-position: center;
+  margin: 0 auto;
+}
